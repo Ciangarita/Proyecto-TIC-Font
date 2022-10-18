@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="js/funcionesCategoria.js"></script> 
+        <script src="https://cdn.tailwindcss.com"></script>  
+    </head>
+
+    <body>
+        <nav class="bg-gray-800">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+                  </div>
+                  <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                      <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                      <a href="categoria.html" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Categorias</a>
+                      <a href="room.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Habitaciones</a>
+                      <a href="cliente.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Clientes</a>
+                      <a href="mensajes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Mensajes</a>
+                      <a href="reservaciones.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reservaciones</a>
+                      <a href="reportes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reportes</a>
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+        
+        
+          </nav>
+     
+        
+        <script type="text/javascript">
+            window.onload = getCategoria();
+        </script>
+
+     
+        <section class="text-gray-400 bg-gray-900 body-font relative">
+          <form class="w-full max-w-lg m-auto">
+              <div class="container py-6">
+                  <div class="flex flex-col text-center w-full">
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Categorias</h1>
+              </div>
+
+              <div class="w-full flex flex-wrap pb-2">
+                  <div class="w-full p-3">
+                      <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-first-name">
+                          Nombre
+                      </label>
+                      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="name" type="text" placeholder="Ingrese nombre Categoria">
+                  </div>
+                  <div class="w-full p-3">
+                      <label class="block tracking-wide text-white text-xs font-bold mb-2" for="grid-last-name">
+                          Descripcion
+                      </label>
+                      <textarea id="description" rows="4" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder="Escriba la descripcion"></textarea>
+                  </div>
+                  <div class="w-full text-center">
+                    <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800" type="submit">
+                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            Crear Categoria
+                    </span>
+                    </button>
+                </div>
+              </div>
+          </form>
+        </section>
+
+        
+    </body>
+
+</html>

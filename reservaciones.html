@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.tailwindcss.com"></script>  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="js/funcionesReservaciones.js"></script>  
+    </head>
+
+    <body>
+        <nav class="bg-gray-800">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+                  </div>
+                  <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                      <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                      <a href="categoria.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Categorias</a>
+                      <a href="room.html" class="">Habitaciones</a>
+        
+                      <a href="cliente.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Clientes</a>
+        
+                      <a href="mensajes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Mensajes</a>
+        
+                      <a href="reservaciones.html" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Reservaciones</a>
+                    
+                      <a href="reportes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reportes</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </nav>
+
+        <label>Escoja la fecha de inicio de la reservacion</label>
+        <input type="date" id="startDate"><br>
+        <label>Escoja la fecha de devolucion de la reservacion</label>
+        <input type="date" id="devolutionDate"><br>
+        <label>Escoja el status</label>
+        <select id="status">
+            <option value="completed">completada</option>
+            <option value="cancelled">cancelada</option>
+        </select><br>
+        
+        <script type="text/javascript">
+            window.onload = getReservaciones();
+        </script>
+
+        <script type="text/javascript">
+            window.onload = getCliente_Reservaciones();
+        </script>
+        <label>Escoja el cliente</label>
+        <select id="select-client"> </select><br>
+
+        <script type="text/javascript">
+            window.onload = getRoom_Reservaciones();
+        </script>
+        <label>Escoja la habitacion</label>
+        <select id="select-room"> </select>
+
+        <button onclick="postReservaciones()">
+            Crear Reservacion
+        </button>
+
+        <div id="resultado1"></div>
+    </body>
+
+</html>

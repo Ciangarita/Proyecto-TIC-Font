@@ -2,11 +2,18 @@
 <html>
     <head>
         <script src="https://cdn.tailwindcss.com"></script>  
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript" src="js/funcionesReservaciones.js"></script>  
     </head>
 
     <body>
+        <script>
+          window.onload = getRoom();
+          window.onload = getClient();
+          window.onload = getReservaciones();
+        </script>
+
         <nav class="bg-gray-800">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div class="flex h-16 items-center justify-between">
@@ -19,7 +26,7 @@
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                       <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
                       <a href="categoria.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Categorias</a>
-                      <a href="room.html" class="">Habitaciones</a>
+                      <a href="room.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Habitaciones</a>
         
                       <a href="cliente.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Clientes</a>
         
@@ -35,37 +42,99 @@
             </div>
         </nav>
 
-        <label>Escoja la fecha de inicio de la reservacion</label>
-        <input type="date" id="startDate"><br>
-        <label>Escoja la fecha de devolucion de la reservacion</label>
-        <input type="date" id="devolutionDate"><br>
-        <label>Escoja el status</label>
-        <select id="status">
-            <option value="completed">completada</option>
-            <option value="cancelled">cancelada</option>
-        </select><br>
-        
-        <script type="text/javascript">
-            window.onload = getReservaciones();
-        </script>
+        <section class="text-gray-400 bg-gray-900 body-font relative">
+          <form class="w-full max-w-xl m-auto">
+              <div class="container py-6">
+                  <div class="flex flex-col text-center w-full">
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Reservaciones</h1>
+              </div>
 
-        <script type="text/javascript">
-            window.onload = getCliente_Reservaciones();
-        </script>
-        <label>Escoja el cliente</label>
-        <select id="select-client"> </select><br>
+              <div class="w-full flex flex-wrap pb-2">
+                <div class="w-full md:w-3/6 p-3">
+                    <label class="block tracking-wide text-white text-xs font-bold mb-2" for="startDate">
+                        Fecha Inicio Reservacion
+                    </label>
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="startDate" type="date">
+                </div>
+                <div class="w-full md:w-3/6 p-3">
+                  <label class="block tracking-wide text-white text-xs font-bold mb-2" for="devolutionDate">
+                      Fecha Devolucion Reservacion
+                  </label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="devolutionDate" type="date">
+                </div>
+                <div class="w-full p-3">
+                  <label class="block tracking-wide text-white text-xs font-bold mb-2" for="status">
+                      Estado
+                  </label>
+                  <select id="status" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                      <option value="completed">Completada</option>
+                      <option value="cancelled">Cancelada</option>
+                  </select>
+              </div>
+              <div class="w-full p-3">
+                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="client">
+                    Cliente
+                </label>
+                <select id="select-client" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                    <optgroup label="Clientes" id="client">
 
-        <script type="text/javascript">
-            window.onload = getRoom_Reservaciones();
-        </script>
-        <label>Escoja la habitacion</label>
-        <select id="select-room"> </select>
+                    </optgroup>
+                </select>
+              </div>
+              <div class="w-full p-3">
+                <label class="block tracking-wide text-white text-xs font-bold mb-2" for="room">
+                    Habitacion
+                </label>
+                <select id="select-room" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                    <optgroup label="Habitaciones" id="room">
 
-        <button onclick="postReservaciones()">
-            Crear Reservacion
-        </button>
+                    </optgroup>
+                </select>
+              </div>  
+              <div class="w-full text-center">
+                <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800" onclick="postReservaciones()">
+                    <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                        Crear Reservacion
+                  </span>
+                </button>
+              </div>
+              </div>
+          </form>
+        </section>
 
-        <div id="resultado1"></div>
+       
+        <div class="w-full my-10">
+          <table class="w-4/5 text-sm text-center text-gray-500 dark:text-gray-400 m-auto">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                      <th scope="col" class="py-3 px-6">
+                          Id
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                          Fecha Inicio
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                          Fecha Devolucion
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                          Estado
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Habitacion
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                        Cliente
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                          Acciones
+                      </th>
+                  </tr>
+              </thead>
+              <tbody  id="reservations">
+                  
+              </tbody>
+          </table>
+      </div>  
     </body>
 
 </html>

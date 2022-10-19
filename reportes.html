@@ -36,19 +36,31 @@
             </div>
         </nav>
 
-        <button onclick="getStatus()">
-            Generar Reporte Status
-        </button><br>
-        <div id="resultado1"></div>
-        <button onclick="getFechas()">
-            Generar Reporte Fechas
-        </button><br>
-        <div id="resultado2"></div>
-        <button onclick="getClientes()">
-            Generar Reporte Clientes
-        </button><br>
-        <div id="resultado3"></div>
+        <section class="text-gray-400 bg-gray-900 body-font relative">
+          <div class="w-full max-w-xl m-auto">
+            <div class="w-full flex flex-wrap">
+              <div class="w-full md:w-2/6 p-3">
+                <button onclick="getStatus()" class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Generar Reporte Status</h5>
+                </button>
+              </div>
+              <div class="w-full md:w-2/6 p-3">
+                <button onclick="getFechas()" class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Generar Reporte Fechas</h5>
+                </button>
+              </div>
+              <div class="w-full md:w-2/6 p-3">
+                <button onclick="getClientes()" class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Generar Reporte Clientes</h5>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
 
+        <div id="informe">
+
+        </div>
     </body>
 
 </html>

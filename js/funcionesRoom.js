@@ -1,7 +1,7 @@
 
 function getRoom(){
     $.ajax({
-        url:"http://localhost:8080/api/Room/all",
+        url:"http://130.162.44.50:8080/api/Room/all",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
@@ -28,7 +28,7 @@ function postRoom(){
     };
     console.log(cajas);
     $.ajax({
-        url:"http://localhost:8080/api/Room/save",
+        url:"http://130.162.44.50:8080/api/Room/save",
         type:"POST",
         datatype:"JSON",
         contentType:"application/json; charset=utf-8",
@@ -39,6 +39,7 @@ function postRoom(){
             }
         });
     }
+    return false;
 }
 
 function putRoom(idBotonActualizar){
@@ -60,7 +61,7 @@ function putRoom(idBotonActualizar){
     };
     console.log(cajas);
     $.ajax({
-        url:"http://localhost:8080/api/Room/update",
+        url:"http://130.162.44.50:8080/api/Room/update",
         type:"PUT",
         datatype:"JSON",
         contentType:"application/json",
@@ -76,28 +77,27 @@ function putRoom(idBotonActualizar){
 function deleteRoom(idBotonBorrar){
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
+          confirmButton: 'focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 m-6 dark:bg-red-600 dark:hover:bg-red-700',
+          cancelButton: 'focus:outline-none text-white bg-red-700 hover:bg-green-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 m-6 dark:bg-green-600 dark:hover:bg-darkgreen-700'
         },
         buttonsStyling: false
       })
       
       swalWithBootstrapButtons.fire({
         title: 'Esta seguro de borrar la habitacion?',
-        text: "You won't be able to revert this!",
+        text: "No se puede revertir esta accion",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar',
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-         
           let myData={
             id:idBotonBorrar
         };
         $.ajax({
-            url:"http://localhost:8080/api/Room/"+idBotonBorrar,
+            url:"http://130.162.44.50:8080/api/Room/"+idBotonBorrar,
             type:"DELETE",
             datatype:"JSON",
             contentType:"application/JSON",
@@ -108,8 +108,8 @@ function deleteRoom(idBotonBorrar){
             }
         });
         swalWithBootstrapButtons.fire(
-            'Deleted!',
-            'Your file has been deleted.',
+            'Eliminado',
+            'El registro se ha eliminado',
             'success'
           )
 
@@ -118,12 +118,12 @@ function deleteRoom(idBotonBorrar){
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
-            'Cancelled',
-            'Your imaginary file is safe :)',
+            'Cancelado',
+            'No se ha eliminado el registro',
             'error'
           )
         }
-      })  
+      })    
 } 
 
 
@@ -138,8 +138,8 @@ function pintarRoom(respuesta){
         <td>${habitacion.hotel}</td>
         <td>${habitacion.description}</td>
         <td>${habitacion.category.name}</td>
-        <td><button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onclick='deleteCategoria(${habitacion.id})>Red</button></td>
-        <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900" onclick='putCategoria(${habitacion.id})>Actualizar</button>
+        <td><button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onclick='deleteRoom(${habitacion.id})'>Eliminar</button>
+        <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3 dark:focus:ring-yellow-900" onclick='putRoom(${habitacion.id})'>Actualizar</button></td>
         </tr>`
     });
     
@@ -154,7 +154,7 @@ function pintarRoom(respuesta){
 //////////////////Get Category /////////////////////////////
 function getRoom_Category(){
     $.ajax({
-        url:"http://localhost:8080/api/Category/all",
+        url:"http://130.162.44.50:8080/api/Category/all",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){

@@ -2,11 +2,17 @@
 <html>
     <head>
         <script src="https://cdn.tailwindcss.com"></script>  
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript" src="js/funcionesMensajes.js"></script> 
     </head>
 
     <body>
+      <script type="text/javascript">
+        window.onload = getRoom();
+        window.onload = getClient();
+        window.onload = getMessage();
+      </script>
         <nav class="bg-gray-800">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div class="flex h-16 items-center justify-between">
@@ -34,6 +40,79 @@
               </div>
             </div>
         </nav>
+
+        <section class="text-gray-400 bg-gray-900 body-font relative">
+          <form class="w-full max-w-lg m-auto">
+              <div class="container py-6">
+                  <div class="flex flex-col text-center w-full">
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Mensajes</h1>
+              </div>
+
+              <div class="w-full flex flex-wrap pb-2">
+                <div class="w-full p-3">
+                  <label class="block tracking-wide text-white text-xs font-bold mb-2" for="room">
+                      Habitacion
+                  </label>
+                  <select id="select-room" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                      <optgroup label="Habitaciones" id="room">
+
+                      </optgroup>
+                  </select>
+                </div>
+                <div class="w-full p-3">
+                  <label class="block tracking-wide text-white text-xs font-bold mb-2" for="client">
+                      Cliente
+                  </label>
+                  <select id="select-client" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                      <optgroup label="Clientes" id="client">
+
+                      </optgroup>
+                  </select>
+                </div>
+                <div class="w-full p-3">
+                  <label class="block tracking-wide text-white text-xs font-bold mb-2" for="messageText">
+                      Mensaje
+                  </label>
+                  <textarea id="messageText" rows="4" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 resize-none" placeholder="Escriba el Mensaje"></textarea>
+                </div>
+
+                <div class="w-full text-center">
+                  <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800" onclick="postMensaje()">
+                      <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                          Crear Mensaje
+                  </span>
+                  </button>
+                </div>
+              </div>
+          </form>
+        </section>
+
+        <div class="w-full my-10">
+          <table class="w-4/5 text-sm text-center text-gray-500 dark:text-gray-400 m-auto">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                      <th scope="col" class="py-3 px-6">
+                          Id
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                          Mensaje
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                          Cliente
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                          Habitacion
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                          Acciones
+                      </th>
+                  </tr>
+              </thead>
+              <tbody  id="messages">
+                  
+              </tbody>
+          </table>
+      </div>  
 
     </body>
 
